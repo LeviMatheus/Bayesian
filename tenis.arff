@@ -1,0 +1,12 @@
+tempo temperatura umidade vento jogar
+S Q A 0 N
+S Q A 1 N
+S Q A 0 S
+C F N 0 N
+C F N 1 N
+C F N 1 S
+S F A 1 N
+C Q N 0 S
+S F A 0 ?
+S F N 1 ?
+C Q A 1 ?
