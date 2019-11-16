@@ -1,0 +1,17 @@
+tempo temperatura umidade vento motivação jogar
+S Q A 1 S N
+S Q N 0 N N
+S F A 0 N S
+S F A 1 S S
+N F N 0 N S
+C Q A 1 N N
+C F A 0 N N
+C F N 1 S N
+C F N 0 S S
+S Q N 1 N S
+S Q A 0 S S
+---
+S Q N 1 N ?
+S F A 0 S ?
+C Q N 1 N ?
+C F A 0 S ?

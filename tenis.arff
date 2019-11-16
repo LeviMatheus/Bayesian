@@ -9,5 +9,5 @@ S F A 1 N
 C Q N 0 S
 ---
 S F A 0 ?
-S F N 1 ?
-C Q A 1 ?
+S Q N 1 ?
+C F A 1 ?
