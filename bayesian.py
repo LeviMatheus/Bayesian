@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import numpy as np
 import sys
+import re
 
 class bayes:
 
@@ -24,6 +25,13 @@ class bayes:
             #print(conjunto) 
         dataset = separador[0]
         questoes = separador[1]
+        #RETIRAR VAZIOS
+        #dataset = " ".join(re.split("\s+", dataset, flags=re.UNICODE))
+        #dataset.strip()
+        #print(dataset)
+        #questoes = " ".join(re.split("\s+", dataset, flags=re.UNICODE))
+        #questoes.strip()
+        #print(questoes)
         #print("Dataset: \n", dataset)
         #print("",end="")
         #print("Questões: ", questoes)
@@ -32,6 +40,11 @@ class bayes:
 
         instancias_dataset = dataset.split("\n") # LE CADA UMA DAS LINHAS E SEPARA COM /N
         instancias_dataset.pop()
+        #print(instancias_dataset)
+        for i in range(len(instancias_dataset)):
+            instancias_dataset[i] = " ".join(re.split("\s+", instancias_dataset[i], flags=re.UNICODE))
+            instancias_dataset[i] = re.sub("^\s+|\s+$", "", instancias_dataset[i], flags=re.UNICODE)
+        print(instancias_dataset)
         '''print("Dataset: \n")
         for i in range(len(instancias_dataset)):
             if i != 0: #PARA N PRINTAR O TITULO DOS ATRIBUTOS
@@ -41,6 +54,9 @@ class bayes:
 
         instancias_questoes = questoes.split("\n") # LE CADA UMA DAS LINHAS E SEPARA COM /N
         instancias_questoes.pop()
+        for i in range(len(instancias_questoes)):
+            instancias_questoes[i] = " ".join(re.split("\s+", instancias_questoes[i], flags=re.UNICODE))
+            instancias_questoes[i] = re.sub("^\s+|\s+$", "", instancias_questoes[i], flags=re.UNICODE)
         questoes = []
         print("Questões:") 
         for i in instancias_questoes:
