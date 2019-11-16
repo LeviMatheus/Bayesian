@@ -32,10 +32,10 @@ class bayes:
 
         instancias_dataset = dataset.split("\n") # LE CADA UMA DAS LINHAS E SEPARA COM /N
         instancias_dataset.pop()
-        print("Dataset: \n")
+        '''print("Dataset: \n")
         for i in range(len(instancias_dataset)):
             if i != 0: #PARA N PRINTAR O TITULO DOS ATRIBUTOS
-                print(instancias_dataset[i]) # MOSTRA AS LINHAS	DAS INSTANCIAS DO DATASET
+                print(instancias_dataset[i]) # MOSTRA AS LINHAS	DAS INSTANCIAS DO DATASET'''
         
         print("\n")
 
@@ -47,16 +47,16 @@ class bayes:
             questoes.append(i.split(" "))
         print(questoes) # MOSTRA AS LINHAS	DAS INSTANCIAS DO DATASET
 
-        print("\n Atributos da instância: \n")
+        print("\n Valores dos atributos das instâncias: \n")
         #CRIAR VETOR DE ATRIBUTOS DE INSTANCIAS (dados)
         dados = []
         for i in instancias_dataset:
             dados.append(i.split(" "))
-        print(dados) #DADOS É O VETOR COM AS INSTANCIAS A SEREM UTILIZADAS
-        
+         
         rotulos = []
         rotulos = dados.pop(0)
         #print(rotulos) #TITULOS SEPARADOS EM UM VETOR A PARTE
+        print(dados) #DADOS É O VETOR COM AS INSTANCIAS A SEREM UTILIZADAS
 
         totalLinhas = len(dados) #CONTANDO QTD DE INSTANCIAS
         #print(totalLinhas)
@@ -85,6 +85,8 @@ class bayes:
 
         qtdatributos = len(rotulos)-1
         print("Quantidade de atributos: ", qtdatributos)
+        print("Quantidade de instancias na base: ", len(dados))
+        print("Quantidade de questões: ", len(questoes))
 
         valAtributos = []
         for i in range(qtdatributos):
@@ -93,20 +95,53 @@ class bayes:
         #print(atributos2)
         #print(valAtributos)
 
-        freq = 0
+        print("\n")
+
+        freq0 = 0
+        freq1 = 0
         probAtribC0 = [] # vetor com a probabilidade de cada atributo para classe 0
         probAtribC1 = [] # vetor com a probabilidade de cada atributo para classe 1
-        #verificar se dados[i][-1] = determinada classe
-        for instancia in dados:
-            if instancia[-1] == classes[0]:#se for da classe 0
-                if(questoes[0][0] == column(self,instancia,0)[0]):#valAtributos[0][0], column(self,dados,0
-                    freq += 1#print("verificando", questoes[0][0], " igual", column(self,instancia,0)[0])
 
-        #calculo das prob para classe 0 = freq do atrib/freq da classe
-        probAtribC0.append(freq/qtd0) #P(S/NAO)
-        
-        #adicionar as probabilidades ao vetor de prob da classe 0            
-        print(probAtribC0)
+        for q in questoes:
+            print("Questão: ", q)
+            #calculo para classe 0
+            for j in range(qtdatributos):
+                for instancia in dados:
+                    if instancia[-1] == classes[0]:#se for da classe 0
+                        if(questoes[0][j] == column(self,instancia,0)[j]):#valAtributos[0][0], column(self,dados,0
+                            freq0 += 1#print("verificando", questoes[0][0], " igual", column(self,instancia,0)[0])
+                probAtribC0.append(freq0/qtd0)
+                freq0 = 0
+            #adicionando ao vetor
+            totalC0 = 1
+            for i in probAtribC0:
+                totalC0 = totalC0*i
+            
+            #print("Probabilidades: ", probAtribC0)
+            print(classes[0], "= ", totalC0)
+
+            #calculo para classe 1
+            for j in range(qtdatributos):
+                for instancia in dados:
+                    if instancia[-1] == classes[1]:#se for da classe 0
+                        if(questoes[0][j] == column(self,instancia,0)[j]):#valAtributos[0][0], column(self,dados,0
+                            freq1 += 1#print("verificando", questoes[0][0], " igual", column(self,instancia,0)[0])
+                probAtribC1.append(freq1/qtd1)
+                freq1 = 0
+            #adicionando ao vetor
+            totalC1 = 1
+            for i in probAtribC1:
+                totalC1 = totalC1*i
+            
+            #print("Probabilidades: ", probAtribC1)
+            print(classes[1], "= ", totalC1)
+
+            if(totalC1>totalC0):
+                print("==> Jogar=",classes[1])
+            else:
+                print("==> Jogar=",classes[0])
+
+            print("\n")
 
 bayes()
 
