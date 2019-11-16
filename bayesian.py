@@ -65,8 +65,12 @@ class bayes:
         for i in dados:
             coluna.append(i[-1])
         #print(classes)
-        classes = set(coluna)
+        #classes = set(coluna) # set antigo
+        classes = dict.fromkeys(coluna).keys() #set novo
         classes = list(classes)
+        '''print("Classes: ", classes)
+        print("Classe 0: ", classes[0])
+        print("Classe 1: ", classes[1])'''
         qtd0 = coluna.count(classes[0])#countagem de instancias
         qtd1 = coluna.count(classes[1])
 
@@ -84,28 +88,29 @@ class bayes:
 
         valAtributos = []
         for i in range(qtdatributos):
-            valAtributos.append(set(column(self, dados,i)))
-        print(set(column(self, dados,0)))
+            valAtributos.append(list(dict.fromkeys(column(self, dados,i)).keys()))#valAtributos.append(set(column(self, dados,i)))
+        #print(set(column(self, dados,0)))
         #print(atributos2)
+        #print(valAtributos)
 
-        pa1 = 0
+        freq = 0
         probAtribC0 = [] # vetor com a probabilidade de cada atributo para classe 0
         probAtribC1 = [] # vetor com a probabilidade de cada atributo para classe 1
         #verificar se dados[i][-1] = determinada classe
         for instancia in dados:
-            #print(instancia)
             if instancia[-1] == classes[0]:#se for da classe 0
-                print(instancia[-1])
-            #    print(instancia[0])
-            #    if(questoes[0][0] == column(self,instancia,0)[0]):#valAtributos[0][0], column(self,dados,0
-                    #print("verificando", questoes[0][0], " igual", column(self,instancia,0)[0])
-            #        pa1 += 1
+                if(questoes[0][0] == column(self,instancia,0)[0]):#valAtributos[0][0], column(self,dados,0
+                    freq += 1#print("verificando", questoes[0][0], " igual", column(self,instancia,0)[0])
 
-        #print(instancia[0][-1])
-        #print(questoes[0][0])
-        #print(classes[0])
-        #print(column(self,dados,0)[3])
-        #print(dados)
-        #print(pa1)
+        #calculo das prob para classe 0 = freq do atrib/freq da classe
+        probAtribC0.append(freq/qtd0) #P(S/NAO)
+        
+        #adicionar as probabilidades ao vetor de prob da classe 0            
+        print(probAtribC0)
 
 bayes()
+
+
+#TODO:A FUNCAO SET ESTA ALEATORIAMENTE COLOCANDO ELEMENTOS PRIMEIRO, ASSIM ESTA DIFICULTANDO O 
+#PROCESSAMENTO NAS FUNCOES POSTERIORES, ARRANJAR ALGUMA FORMA DE ORGANIZAR O SET PARA PADRONIZAR SEMPRE
+#UMA ORDEM
