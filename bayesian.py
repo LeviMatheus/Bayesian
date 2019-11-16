@@ -14,7 +14,7 @@ class bayes:
         entrada = sys.argv[1:] # PEGA O SEGUNDO INDICE COMO ENTRADA
         print("\n Analisando base de dados: ", entrada, "\n") # MOSTRA A ENTRADA
         arquivo = open(entrada[0], "r") # ABRE O ARQUIVO DE ENTRADA
-        separador = arquivo.read().split("---")
+        separador = arquivo.read().split("---\n")
         arquivo.close()
         #for conjunto in dataset:
             #print(conjunto) 
@@ -37,18 +37,29 @@ class bayes:
 
         instancias_questoes = questoes.split("\n") # LE CADA UMA DAS LINHAS E SEPARA COM /N
         instancias_questoes.pop()
+        questoes = []
         print("Questões:") 
         for i in instancias_questoes:
-            print(i) # MOSTRA AS LINHAS	DAS INSTANCIAS DO DATASET
+            questoes.append(i.split(" "))
+        print(questoes) # MOSTRA AS LINHAS	DAS INSTANCIAS DO DATASET
 
         print("\n Atributos da instância: \n")
         #CRIAR VETOR DE ATRIBUTOS DE INSTANCIAS (dados)
         dados = []
         for i in instancias_dataset:
             dados.append(i.split(" "))
-        print(dados)
+        print(dados) #DADOS É O VETOR COM AS INSTANCIAS A SEREM UTILIZADAS
+        
+        rotulos = []
+        rotulos = dados.pop(0)
+        #print(rotulos) #TITULOS SEPARADOS EM UM VETOR A PARTE
 
-        print(dados[0][0] + dados[1][0])
-        print(dados[0][1] + dados[1][1])
+        totalLinhas = len(dados) #CONTANDO QTD DE INSTANCIAS
+        #print(totalLinhas)
+
+        classes = []
+        for i in dados:
+            classes.append(i[-1])
+        #print(classes)
 
 bayes()
