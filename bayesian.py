@@ -161,9 +161,9 @@ class bayes:
             print(classes[1], "= ", totalC1)
 
             if(totalC1>totalC0):
-                print("==> Jogar=",classes[1])
+                print("==> ", rotulos[-1]," =" ,classes[1])
             else:
-                print("==> Jogar=",classes[0])
+                print("==> ", rotulos[-1]," =" ,classes[0])
 
             print("\n")
 

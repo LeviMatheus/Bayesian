@@ -1,0 +1,21 @@
+outlook=sunny outlook=overcast outlook=rainy temperature=hot temperature=mild temperature=cool humidity=normal windy=FALSE play
+1 0 0 1 0 0 0 1 n
+1 0 0 1 0 0 0 0 n
+0 1 0 1 0 0 0 1 y
+0 0 1 0 1 0 0 1 y
+0 0 1 0 0 1 1 1 y
+0 0 1 0 0 1 1 0 n
+0 1 0 0 0 1 1 0 y
+1 0 0 0 1 0 0 1 n
+1 0 0 0 0 1 1 1 y
+0 0 1 0 1 0 1 1 y
+1 0 0 0 1 0 1 0 y
+0 1 0 0 1 0 0 0 y
+0 1 0 1 0 0 1 1 y
+0 0 1 0 1 0 0 0 n
+---
+1 0 0 1 0 0 0 1 ?
+1 0 0 1 0 0 0 0 ?
+0 1 0 1 0 0 0 1 ?
+1 0 0 1 0 0 0 1 ?
+1 0 0 1 0 0 0 0 ?
